@@ -1,21 +1,30 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
+import models.DatabaseLink;
+import models.Developer;
 
-import java.util.*;
+import com.force.api.ApiConfig;
+import com.force.api.ApiSession;
+import com.force.api.Auth;
+import com.force.api.QueryResult;
 
-import models.*;
-
-@With(controllers.force.Secure.class)
-public class Database extends Controller {
+public class Database extends ParentController {
 
     public static void index() {
-        render();
+    	QueryResult<DatabaseLink> list = coredb.query("SELECT id, name, username__c, instance__c FROM database__c WHERE developer__c = '"+Developer.readFrom(session).getId()+"'", DatabaseLink.class);
+        render(list);
     }
     
-    public static void detail() {
-    	render();
+    public static void weblogin(String id) {
+
+    	DatabaseLink d = coredb.query("SELECT username__c, token__c FROM database__c WHERE id='"+id+"'", DatabaseLink.class).getRecords().get(0);
+    	
+    	ApiSession s = Auth.refreshOauthTokenFlow(new ApiConfig()
+    			.setClientId(System.getenv("LINK_OAUTH_KEY"))
+    			.setClientSecret(System.getenv("LINK_OAUTH_SECRET"))
+    			.setRefreshToken(d.getToken()));
+    	System.out.println("Exchanged refresh token for access token: "+s.getAccessToken());
+    	redirect(s.getApiEndpoint()+"/secur/frontdoor.jsp?un="+d.getUsername()+"&sid="+s.getAccessToken()+"&startURL=/home/home.jsp");
     }
 
 }

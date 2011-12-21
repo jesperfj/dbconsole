@@ -1,6 +1,6 @@
-.classpath
-.settings
-.project
+/.classpath
+/.settings
+/.project
 /lib
 /dist
 /commands.pyc
@@ -8,3 +8,4 @@
 /modules
 /tmp
 /.swp
+/.env

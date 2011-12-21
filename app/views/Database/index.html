@@ -1,8 +1,20 @@
 #{extends 'main.html' /}
 #{set title:'Databases' /}
 
-<h2>Databases</h2>
-<ul>
-<li>HelloWorld - Sandbox</li>
-<li>HelloWorld - Production</li>
-</ul>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Username</th><th>Instance</th><th></th>
+		</tr>
+	</thead>
+	<tbody>
+		#{list items:list.records, as:'item'}
+		<tr>
+			<td>${item.name}</td>
+			<td>${item.username}</td>
+			<td>${item.instance}</td>
+			<td><a href="/database/weblogin?id=${item.id}" class="btn primary">Web</a></td>
+		</tr>
+		#{/list}
+	</tbody>
+</table>

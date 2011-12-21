@@ -1,0 +1,11 @@
+#{extends 'main.html' /} 
+#{set title:'Authenticating...' /}
+
+<iframe id="logoutloader" height="0" width="0" style="visibility:hidden" src="https://login.salesforce.com/secur/logout.jsp"></iframe> 
+
+<script type="text/javascript">
+	var f = document.getElementById('logoutloader');
+	f.onload = function() {
+    	location.href="${oauthRedirect.raw()}";
+	}
+</script>

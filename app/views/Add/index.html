@@ -1,4 +1,27 @@
-#{extends 'main.html' /}
+#{extends 'main.html' /} 
 #{set title:'Add Database' /}
-
-Add a new database
+<form method="POST" action="/add/start">
+	<fieldset>
+		<legend></legend>
+		<div class="clearfix">
+			<label for="xlInput">Friendly Name</label>
+			<div class="input">
+				<input class="xlarge" id="xlInput" name="name" size="30" type="text">
+			</div>
+		</div>
+		<!-- /clearfix -->
+		<div class="clearfix">
+			<label for="normalSelect">Instance</label>
+			<div class="input">
+				<select name="instance" id="normalSelect">
+					<option>login.salesforce.com</option>
+					<option>test.salesforce.com (doesn't work yet)</option>
+				</select>
+			</div>
+		</div>
+		<!-- /clearfix -->
+		<div class="actions">
+			<input type="submit" class="btn primary" value="Add...">
+		</div>
+	</fieldset>
+</form>
