@@ -28,7 +28,7 @@ public class ParentController extends Controller {
 	@Before
 	public static void prepare() {
 		// may need to use x-forwarded-proto
-		if(!ON_LOCALHOST && !request.secure) {
+		if(!ON_LOCALHOST && request.headers.get("x-forwarded-proto").value()!="https") {
 			// if we're not on localhost and we receive an insecure call, redirect to https
 			redirect(APP_URI+request.url);
 			return;
