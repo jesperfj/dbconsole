@@ -34,7 +34,7 @@ public class ParentController extends Controller {
 	static protected final ApiConfig CONFIG = new ApiConfig()
 	 	.setClientId(LINK_OAUTH_KEY)
 	 	.setClientSecret(LINK_OAUTH_SECRET)
-	 	.setRedirectURI(APP_URI+"/app/complete");
+	 	.setRedirectURI(APP_URI+"/add/complete");
 
 	static SecureRandom random = new SecureRandom();
 
