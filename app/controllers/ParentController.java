@@ -27,10 +27,8 @@ public class ParentController extends Controller {
 
 	@Before
 	public static void prepare() {
-		for(String key: request.headers.keySet()) {
-			System.out.println("header | "+key+": "+request.headers.get(key));
-		}
-		if(!ON_LOCALHOST && !request.headers.get("host").toString().startsWith("https")) {
+		// may need to use x-forwarded-proto
+		if(!ON_LOCALHOST && !request.secure) {
 			// if we're not on localhost and we receive an insecure call, redirect to https
 			redirect(APP_URI+request.url);
 			return;
