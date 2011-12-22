@@ -30,7 +30,7 @@ public class Add extends ParentController {
     	ApiSession s = Auth.completeOAuthWebServerFlow(new AuthorizationResponse()
     				.apiConfig(CONFIG)
     				.code(code));
-    	String username = new ForceApi(s.getApiConfig(),s).getIdentity().getUsername();
+    	String username = new ForceApi(CONFIG,s).getIdentity().getUsername();
     	int n = state.indexOf(' ');
     	DatabaseLink link = new DatabaseLink();
     	link.setInstance(state.substring(0,n));

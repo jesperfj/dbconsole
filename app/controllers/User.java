@@ -14,7 +14,11 @@ public class User extends ParentController {
 	
 	public static void logout() {
 		// TODO: Move this into force module
-		Auth.revokeToken(new ApiConfig(), session.get("force_auth").split(" ")[0]);
+		try {
+			Auth.revokeToken(new ApiConfig(), session.get("force_auth").split(" ")[0]);
+		} catch(Throwable t) {
+			// TODO: Catch more specific exception when implemented in API
+		}
 		session.clear();
 		Application.index();
 	}
