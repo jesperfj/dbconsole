@@ -1,7 +1,7 @@
 # Application dependencies
 
 require:
-    - play
+    - play -> play 1.2.4
     - play -> force 0.3
     - com.force.api -> force-rest-api 0.0.7
 
