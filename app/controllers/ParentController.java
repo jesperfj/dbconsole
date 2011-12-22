@@ -19,9 +19,22 @@ import controllers.force.Secure;
 
 public class ParentController extends Controller {
 
-	static protected final ForceApi coredb = new ForceApi(new ApiConfig().setForceURL(System.getenv("FORCE_COREDB_URL")));
-	static protected final String APP_URI = System.getenv("APP_URI");
+	// This app requires the following environment variables
+	
+	static protected final String APP_URI 			 = System.getenv("APP_URI");
+	static protected final String LINK_OAUTH_KEY 	 = System.getenv("LINK_OAUTH_KEY");
+	static protected final String LINK_OAUTH_SECRET  = System.getenv("LINK_OAUTH_SECRET");
+	static protected final String FORCE_OAUTH_KEY 	 = System.getenv("FORCE_OAUTH_KEY");
+	static protected final String FORCE_OAUTH_SECRET = System.getenv("FORCE_OAUTH_SECRET");
+	static protected final String FORCE_COREDB_URL   = System.getenv("FORCE_COREDB_URL");
+	
+	static protected final ForceApi coredb = new ForceApi(new ApiConfig().setForceURL(FORCE_COREDB_URL));
 	static protected final boolean ON_LOCALHOST = APP_URI.startsWith("http://localhost");
+
+	static protected final ApiConfig CONFIG = new ApiConfig()
+	 	.setClientId(LINK_OAUTH_KEY)
+	 	.setClientSecret(LINK_OAUTH_SECRET)
+	 	.setRedirectURI(APP_URI+"/app/complete");
 
 	static SecureRandom random = new SecureRandom();
 

@@ -19,10 +19,7 @@ public class Database extends ParentController {
 
     	DatabaseLink d = coredb.query("SELECT username__c, token__c FROM database__c WHERE id='"+id+"'", DatabaseLink.class).getRecords().get(0);
     	
-    	ApiSession s = Auth.refreshOauthTokenFlow(new ApiConfig()
-    			.setClientId(System.getenv("LINK_OAUTH_KEY"))
-    			.setClientSecret(System.getenv("LINK_OAUTH_SECRET"))
-    			.setRefreshToken(d.getToken()));
+    	ApiSession s = Auth.refreshOauthTokenFlow(CONFIG, d.getToken());
     	System.out.println("Exchanged refresh token for access token: "+s.getAccessToken());
     	redirect(s.getApiEndpoint()+"/secur/frontdoor.jsp?un="+d.getUsername()+"&sid="+s.getAccessToken()+"&startURL=/home/home.jsp");
     }

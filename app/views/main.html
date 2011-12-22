@@ -81,40 +81,32 @@
 
   <body>
 
+	#{if developer!=null}
     <div class="topbar" data-dropdown="dropdown">
       <div class="fill">
         <div class="container">
-          <a class="brand" href="/">Database.com Developer Console</a>
+          <a class="brand" href="/">Database.com Console</a>
           <ul class="nav">
             <li><a href="/database">Databases</a></li>
-            <li><a href="/Add">Add...</a></li>
+            <li><a href="/add">Add...</a></li>
           </ul>
           <ul class="nav secondary-nav">
               <li class="dropdown"><a class="dropdown-toggle" href="#">${developer.email}</a>
                   <ul class="dropdown-menu">
                       <li><a href="/user">Settings</a></li>
-                      <li><a href="#">Sign out</a></li>
+                      <li><a href="/user/logout">Sign out</a></li>
                   </ul>
               </li>
           </ul>
         </div>
       </div>
     </div>
+    #{/if}
 
     <div class="container">
 
       <div class="content">
-        <div class="page-header">
-          <h1>#{get 'title' /}</h1>
-        </div>
-        <div class="row">
-          <div class="span10">
-	        #{doLayout /}
-          </div>
-          <div class="span4">
-            <h3>Secondary content</h3>
-          </div>
-        </div>
+        #{doLayout /}
       </div>
 
       <footer>

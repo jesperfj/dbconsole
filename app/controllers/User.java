@@ -2,6 +2,9 @@ package controllers;
 
 import models.Developer;
 
+import com.force.api.ApiConfig;
+import com.force.api.Auth;
+
 public class User extends ParentController {
 
 	public static void index() {
@@ -10,6 +13,9 @@ public class User extends ParentController {
 	}
 	
 	public static void logout() {
-		render();
+		// TODO: Move this into force module
+		Auth.revokeToken(new ApiConfig(), session.get("force_auth").split(" ")[0]);
+		session.clear();
+		Application.index();
 	}
 }

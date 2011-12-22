@@ -1,14 +1,23 @@
 #{extends 'main.html' /}
-#{set title:'Welcome' /}
-
-<big>
-Use this console to link up all your Database.com accounts for easy access via this Web UI and command line utilities
-</big>
-<div>
-&nbsp;
-</div>
-<div>
-<center>
-<a href="/add" class="btn large primary">Link a Database...</a>
-</center>
+<div class="row">
+	<div class="span10 offset2">
+		<h1>Welcome to the Database.com Console</h1>
+		<big>
+		<ul class="unstyled">
+			<li>Use this console to link up all your Database.com
+					accounts for easy access via this Web UI and command line utilities
+				
+			</li>
+			<li>
+				&nbsp;
+			</li>
+			<li>
+				Log in with any Salesforce.com account. The account will become the "master" account for managing other accounts.
+			</li>
+		</ul>
+		</big>
+		<center>
+			<a href="/database" class="btn large primary">Login</a>
+		</center>
+	</div>
 </div>
