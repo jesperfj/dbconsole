@@ -1,13 +1,7 @@
 #{extends 'singlerow.html' /}
 #{set title:'Settings' /}
 
-<form>
-<fieldset>
-<div class="clearfix">
-	<label>API Key</label>
-	<div class="input">
-		<span class="uneditable-input">${developer.apiKey}</span>
-	</div>
-</div>
-</fieldset>
-</form>
+<h3>API Key</h3>
+<pre>${developer.apiKey}</pre>
+<h3>Latest dbc tool</h3>
+<pre>curl http://dbc-api.herokuapp.com/tool/dbc > $HOME/bin/dbc</pre>
