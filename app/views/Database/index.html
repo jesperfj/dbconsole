@@ -1,6 +1,8 @@
 #{extends 'singlerow.html' /}
 #{set title:'Databases' /}
 
+<form method="GET" action="/database/delete">
+<input type="hidden" name="id" id="idfield" value="tesy"/>
 <table>
 	<thead>
 		<tr>
@@ -13,8 +15,10 @@
 			<td>${item.name}</td>
 			<td>${item.username}</td>
 			<td>${item.instance}</td>
-			<td><a href="/database/weblogin?id=${item.id}" class="btn primary">Web</a></td>
+			<td><a href="/database/weblogin?id=${item.id}" class="btn primary">Web</a>
+				<input type="submit" class="btn danger" name="delete" value="Delete" onClick="javascript:$('#idfield').val('${item.id}')"/></td>
 		</tr>
 		#{/list}
 	</tbody>
 </table>
+</form>

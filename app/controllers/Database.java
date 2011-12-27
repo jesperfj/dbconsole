@@ -23,5 +23,12 @@ public class Database extends ParentController {
     	System.out.println("Exchanged refresh token for access token: "+s.getAccessToken());
     	redirect(s.getApiEndpoint()+"/secur/frontdoor.jsp?un="+d.getUsername()+"&sid="+s.getAccessToken()+"&startURL=/home/home.jsp");
     }
+    
+    public static void delete(String id) {
+    	DatabaseLink d = coredb.query("SELECT token__c FROM database__c WHERE id='"+id+"'", DatabaseLink.class).getRecords().get(0);
+    	Auth.revokeToken(new ApiConfig(), d.getToken());
+    	coredb.deleteSObject("Database__c", id);
+    	index();
+    }
 
 }
