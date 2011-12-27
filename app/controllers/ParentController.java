@@ -9,9 +9,11 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import play.modules.force.Force;
 import play.mvc.Before;
+import play.mvc.Catch;
 import play.mvc.Controller;
 
 import com.force.api.ApiConfig;
+import com.force.api.ApiTokenException;
 import com.force.api.ForceApi;
 import com.force.api.QueryResult;
 
@@ -63,5 +65,12 @@ public class ParentController extends Controller {
 			d.writeTo(session);
 		}
 		renderArgs.put("developer",d);
+	}
+	
+	@Catch(ApiTokenException.class)
+	public static void catchBadApiToken(ApiTokenException e) {
+		System.out.println("Caught API Token Exception "+e.getMessage());
+        session.clear();
+        Application.index();
 	}
 }
