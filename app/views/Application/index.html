@@ -1,27 +1,39 @@
 #{extends 'main.html' /}
 <div class="row">
 	<div class="span10 offset2">
-		<h1>Welcome to the Database.com Console</h1>
-		<big>
-		<ul class="unstyled">
-			<li>Use this console to link up all your Database.com
-					accounts for easy access via this Web UI and command line utilities
-				
-			</li>
-			<li>
-				&nbsp;
-			</li>
-			<li>
-				Log in with any Salesforce.com account. The account will become the "master" account for managing other accounts.
-			</li>
-			<li>
-				&nbsp;
-			</li>
-			<li>
-				Download the dbc command line tool with<br/> <code>curl http://dbc-api.herokuapp.com/tool/dbc > $HOME/bin/dbc</code>
-			</li>
-		</ul>
-		</big>
+		<h1>Welcome to dbconsole</h1>
+		<p>
+			<big>Use this console to link to the databases of all your Salesforce.com, Force.com and Database.com
+				accounts for easy web login and access via the dbc command line tool.</big>
+		</p>
+		<p>
+			<big></big>
+		</p>
+		<p>
+			<big>
+				<ol>
+					<li style="margin-bottom: 9px">
+						Download the dbc command line tool with
+						<pre>
+$ curl http://dbc-api.herokuapp.com/tool/dbc > $HOME/bin/dbc
+$ chmod +x $HOME/bin/dbc</pre>
+					</li>
+					<li style="margin-bottom: 9px">
+						Log in to this web console with any Salesforce.com account. The
+						account will become the "master" account for managing other
+						accounts.
+					</li>
+					<li style="margin-bottom: 9px">
+						Go get your API key under <a href="/user">settings</a> and pass it to the command line tool with
+						<pre>$ dbc key &lt;apikey&gt;</pre>
+					</li>
+					<li style="margin-bottom: 9px">
+						Use the web console to <a href="/add">set up links</a> to all your Salesforce.com, Force.com or Database.com developer accounts.
+					</li>
+				</ol>
+			</big>
+		</p>
+
 		<center>
 			<a href="/database" class="btn large primary">Login</a>
 		</center>
