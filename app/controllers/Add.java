@@ -36,7 +36,7 @@ public class Add extends ParentController {
     	link.setInstance(state.substring(0,n));
     	link.setName(state.substring(n+1));
     	link.setToken(s.getRefreshToken());
-    	link.setDeveloperId(Developer.readFrom(session).getId());
+    	link.setDeveloper(Developer.readFrom(session).getId());
     	link.setUsername(username);
     	coredb.createSObject("database__c", link);
     	
