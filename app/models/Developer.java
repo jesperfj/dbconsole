@@ -33,6 +33,10 @@ public class Developer {
 		return email;
 	}
 
+    public void setId(String value) {
+        id = value;
+    }
+    
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -55,4 +59,5 @@ public class Developer {
 	public void writeTo(Session session) {
 		session.put("developer", id+" "+email+" "+apiKey);
 	}
+
 }

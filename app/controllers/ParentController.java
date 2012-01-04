@@ -58,7 +58,7 @@ public class ParentController extends Controller {
 			if(qr.getTotalSize()==0) {
 				// wasn't in core db. Generate an API key and create a record
 				d.setApiKey(new BigInteger(130, random).toString(32));
-				coredb.createSObject("Developer__c", d);
+				d.setId(coredb.createSObject("Developer__c", d));
 			} else {
 				d = qr.getRecords().get(0);
 			}
